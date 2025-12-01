@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrei Johan Carpena - Data Analytics & Information Systems Professional. Portfolio showcasing technical projects, leadership experience, and professional accomplishments.">
+    <title>Andrei Johan Carpena | Data Analytics & Information Systems</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1f1f1f;
+            --accent-primary: #c9a961;
+            --accent-secondary: #d4bb7a;
+            --accent-tertiary: #b89850;
+            --text-primary: #f5f5f5;
+            --text-secondary: #d1d1d1;
+            --text-muted: #888888;
+            --border-color: #2a2a2a;
+            --success: #c9a961;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --spacing-2xl: 4rem;
+            --spacing-3xl: 6rem;
+            --border-radius: 0.5rem;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: 0.15em;
+            font-family: 'Georgia', serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        section {
+            padding: var(--spacing-3xl) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto var(--spacing-lg);
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 0 40px rgba(201, 169, 97, 0.2);
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xl);
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-primary);
+            color: #0a0a0a;
+            box-shadow: 0 4px 6px -1px rgba(201, 169, 97, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-tertiary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(201, 169, 97, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .section-tag {
+            display: inline-block;
+            color: var(--accent-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-md);
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Video Section */
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .video-placeholder {
+            background: var(--bg-tertiary);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-3xl) var(--spacing-lg);
+            border: 2px dashed var(--border-color);
+        }
+
+        .video-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: var(--spacing-md);
+            opacity: 0.5;
+        }
+
+        .video-placeholder h3 {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .video-placeholder p {
+            color: var(--text-muted);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -25px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-primary);
+            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px rgba(201, 169, 97, 0.4);
+        }
+
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent-primary);
+            transform: translateX(4px);
+        }
+
+        .timeline-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-company {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timeline-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: flex;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+
+        .timeline-description {
+            list-style: none;
+        }
+
+        .timeline-description li {
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+        }
+
+        .timeline-description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .timeline-description li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(201, 169, 97, 0.2);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .card-subtitle {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .card-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .card-description ul {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .card-description li {
+            padding-left: 1.5rem;
+            margin-bottom: var(--spacing-xs);
+            position: relative;
+        }
+
+        .card-description li::before {
+            content: '•';
+            position: absolute;
+            left: 0.5rem;
+            color: var(--accent-primary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .tech-tag {
+            background: var(--bg-tertiary);
+            color: var(--accent-secondary);
+            padding: 0.375rem 0.75rem;
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+        }
+
+        .skill-category-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-xs);
+        }
+
+        .skill-item {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 0.9rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Writing Sample */
+        .writing-sample {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+        }
+
+        .writing-sample h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-primary);
+        }
+
+        .writing-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .writing-sample p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .writing-sample p:last-child {
+            margin-bottom: 0;
+        }
+
+        .writing-sample h4 {
+            color: var(--accent-secondary);
+            font-size: 1.15rem;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Slide Deck */
+        .slide-deck {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .slide-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .slide-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .slide-number {
+            position: absolute;
+            top: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: var(--accent-primary);
+            color: var(--text-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .slide-card h4 {
+            font-size: 1.15rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--accent-secondary);
+            padding-right: var(--spacing-xl);
+        }
+
+        .slide-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .slide-content ul {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .slide-content li {
+            padding-left: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+        }
+
+        .slide-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Goals Section */
+        .goals-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+        }
+
+        .goals-content h3 {
+            font-size: 1.5rem;
+            color: var(--accent-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .goals-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .goals-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: var(--transition);
+            text-decoration: none;
+            display: block;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px -6px rgba(201, 169, 97, 0.2);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .contact-value {
+            color: var(--accent-secondary);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+            margin-top: var(--spacing-3xl);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding-top: 100px;
+            }
+
+            .hero-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            section {
+                padding: var(--spacing-2xl) 0;
+            }
+
+            .timeline {
+                padding-left: var(--spacing-md);
+            }
+
+            .timeline-dot {
+                left: -20px;
+            }
+
+            .cards-grid,
+            .skills-grid,
+            .slide-deck {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Focus Styles */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Home">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="10" y="10" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <text x="50" y="65" font-family="Georgia, serif" font-size="36" font-weight="700" text-anchor="middle" fill="currentColor" letter-spacing="2">AJC</text>
+                </svg>
+                <span>AJC</span>
+            </a>
+            <ul class="nav-links" role="navigation">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero visible">
+        <div class="container">
+            <div class="hero-content">
+                <img src="https://placehold.co/400x400/141414/c9a961?text=AJC" alt="Andrei Johan Carpena" class="hero-image">
+                <h1>Andrei Johan Carpena</h1>
+                <p class="hero-subtitle">Data Analytics & Information Systems</p>
+                <p class="hero-tagline">
+                    Building scalable data solutions and optimizing systems for performance.
+                    Computer Information Systems & Technology student at UT Dallas with hands-on experience
+                    in cloud infrastructure, database optimization, and full-stack development.
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Who I Am</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="about-content">
+                <p>
+                    I am a driven software developer and data engineering professional currently pursuing my Bachelor of Science in Computer Information Systems & Technology at The University of Texas at Dallas. My technical journey began in high school, where I served as Vice President of the Zeta Omicron Computer Science National Honor Society, organizing STEM education initiatives and mentoring peers in programming fundamentals. This early leadership experience ignited my passion for leveraging technology to solve complex problems and create meaningful impact.
+                </p>
+                <p>
+                    My professional experience at Velocity Sim Racing Lounge as a Software and Data Engineering Intern gave me invaluable exposure to production-level database optimization, cloud infrastructure management, and cross-functional collaboration. I successfully optimized database schemas that improved retrieval speeds by 30% and reduced dashboard load times by 20% for over 200 active users. Beyond technical implementation, I automated critical payment workflows processing 100+ monthly transactions, significantly enhancing data accuracy and governance standards. This role taught me the importance of balancing technical excellence with business objectives, ensuring that every optimization delivered measurable value to stakeholders.
+                </p>
+                <p>
+                    Beyond my technical pursuits, I am deeply committed to community service and leadership development. As Philanthropy Chair for Pi Kappa Phi at UT Dallas, I led a team of over 40 members in organizing our annual Bike-a-Thon event, raising $7,000 for disability awareness initiatives. This role has strengthened my project management capabilities, communication skills, and ability to inspire teams toward a shared mission. Whether I am debugging complex database queries, designing IoT data pipelines, or coordinating philanthropic events, I approach every challenge with analytical rigor, collaborative spirit, and a commitment to continuous improvement. I am eager to contribute my skills to innovative teams that value both technical excellence and positive social impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Introduction</span>
+                <h2 class="section-title">Get to Know Me</h2>
+            </div>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="margin: 0 auto; display: block; color: var(--accent-primary);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3>Self-Introduction Video</h3>
+                    <p>Video content will be embedded here</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Professional Background</span>
+                <h2 class="section-title">Work Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Software and Data Engineering Intern</h3>
+                            <div class="timeline-company">Velocity Sim Racing Lounge</div>
+                            <div class="timeline-meta">
+                                <span>June 2025 - September 2025</span>
+                                <span>Houston, TX</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-description">
+                            <li>Monitored system performance and optimized database workflows for 200+ users</li>
+                            <li>Optimized 5+ schemas, boosting retrieval speeds 30% and dashboard load times 20%</li>
+                            <li>Automated 100+ monthly payments, improving data accuracy and governance by 40%</li>
+                            <li>Resolved technical issues and supported cross-team troubleshooting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Curbside Associate</h3>
+                            <div class="timeline-company">HEB</div>
+                            <div class="timeline-meta">
+                                <span>October 2023 - July 2024</span>
+                                <span>Tomball, TX</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-description">
+                            <li>Processed 70+ curbside orders per shift with high accuracy</li>
+                            <li>Improved workflow efficiency, reducing wait times by 1-2 minutes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3 class="timeline-title">Waiter</h3>
+                            <div class="timeline-company">Aji Robata and Ramen</div>
+                            <div class="timeline-meta">
+                                <span>June 2022 - December 2022</span>
+                                <span>Tomball, TX</span>
+                            </div>
+                        </div>
+                        <ul class="timeline-description">
+                            <li>Delivered efficient service during peak hours</li>
+                            <li>Trained 3+ new staff, improving team speed by 20%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Velocity Membership and Booking System</h3>
+                        <div class="card-subtitle">June 2025 - September 2025</div>
+                    </div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Built booking dashboard for member data visualization</li>
+                            <li>Aligned data models with BI best practices</li>
+                            <li>Collaborated cross-functionally on technical solutions</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Azure App Services</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Azure SQL</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Project Apollo</h3>
+                        <div class="card-subtitle">May 2023 - June 2023</div>
+                    </div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Built IoT pipeline using Raspberry Pi 4 and AM2302 for environment tracking</li>
+                            <li>Integrated Slack API for automated alerts and dashboards</li>
+                            <li>Automated data preprocessing for time-series analysis</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Slack API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Capabilities</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span>💻</span> Programming Languages
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">C++</span>
+                        <span class="skill-item">C#</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span>☁️</span> Cloud & Data Platforms
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Azure Cloud</span>
+                        <span class="skill-item">Azure SQL</span>
+                        <span class="skill-item">Azure App Services</span>
+                        <span class="skill-item">Databricks</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span>🛠️</span> Tools & Technologies
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Raspberry Pi</span>
+                        <span class="skill-item">Slack API</span>
+                        <span class="skill-item">Git</span>
+                        <span class="skill-item">IoT Systems</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">
+                        <span>🌐</span> Languages
+                    </h3>
+                    <div class="skill-list">
+                        <span class="skill-item">English (Native)</span>
+                        <span class="skill-item">Tagalog (Fluent)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Community Impact</span>
+                <h2 class="section-title">Leadership & Extracurriculars</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Philanthropy Chair</h3>
+                        <div class="card-subtitle">Pi Kappa Phi</div>
+                        <div class="card-meta">January 2025 - Present | UT Dallas</div>
+                    </div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Led Bike-a-Thon with 40+ members, raising $7,000 for disability awareness</li>
+                            <li>Managed logistics, outreach, and sponsor engagement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Vice President</h3>
+                        <div class="card-subtitle">Zeta Omicron CS National Honor Society</div>
+                        <div class="card-meta">August 2023 - May 2024 | Klein Oak High School</div>
+                    </div>
+                    <div class="card-description">
+                        <ul>
+                            <li>Organized 10+ STEM events supporting CS education</li>
+                            <li>Coordinated tutoring and workshops for 20+ members</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Writing Sample Section -->
+    <section id="writing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Technical Writing</span>
+                <h2 class="section-title">Writing Sample</h2>
+            </div>
+            <div class="writing-sample">
+                <h3>Optimizing Database Performance in Cloud-Based Member Management Systems</h3>
+                <div class="writing-meta">Technical Case Study | Published November 2025</div>
+
+                <p>
+                    During my internship at Velocity Sim Racing Lounge, I encountered a critical challenge that many growing businesses face: database performance degradation as user activity scales. Our member management system, which handled bookings, payments, and user data for over 200 active members, was experiencing increasingly slow query response times, particularly during peak usage hours. Dashboard load times had increased from an acceptable 2-3 seconds to nearly 8-10 seconds, creating friction in both the customer experience and internal operations. This case study examines the systematic approach I took to diagnose and resolve these performance bottlenecks.
+                </p>
+
+                <h4>Identifying the Root Causes</h4>
+                <p>
+                    My first step was comprehensive performance profiling using Azure SQL Database's built-in Query Performance Insight tool. Through systematic analysis, I identified three primary issues: missing indexes on frequently queried columns, inefficient JOIN operations that were performing full table scans, and outdated statistics that prevented the query optimizer from choosing optimal execution plans. Additionally, I discovered that several legacy stored procedures were retrieving entire datasets rather than implementing pagination, causing unnecessary network overhead and memory consumption on the application layer.
+                </p>
+
+                <h4>Implementation and Results</h4>
+                <p>
+                    I implemented a phased optimization strategy beginning with the highest-impact, lowest-risk changes. First, I created composite indexes on the most frequently accessed query patterns, which immediately reduced the average query execution time by 35%. Next, I refactored five critical stored procedures to implement efficient filtering and pagination logic, reducing data transfer volumes by over 60%. I also established an automated statistics update schedule to ensure the query optimizer always had current information. The cumulative impact of these optimizations was substantial: retrieval speeds improved by 30%, dashboard load times decreased by 20%, and we gained headroom to support future user growth without additional infrastructure costs. This experience reinforced an important lesson—performance optimization is not merely about technical implementation, but about understanding user workflows, measuring impact systematically, and prioritizing changes based on business value.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide Deck Section -->
+    <section id="slides">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Presentation</span>
+                <h2 class="section-title">Technical Presentation Sample</h2>
+                <p class="section-description">
+                    Key slides from "Building Scalable IoT Data Pipelines: Project Apollo Case Study"
+                </p>
+            </div>
+            <div class="slide-deck">
+                <div class="slide-card">
+                    <span class="slide-number">1</span>
+                    <h4>Project Overview</h4>
+                    <div class="slide-content">
+                        <ul>
+                            <li>Built end-to-end IoT data pipeline for environmental monitoring</li>
+                            <li>Hardware: Raspberry Pi 4, AM2302 temperature/humidity sensor</li>
+                            <li>Real-time data collection with automated alerting system</li>
+                            <li>Integration with Slack API for team notifications</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide-card">
+                    <span class="slide-number">2</span>
+                    <h4>Technical Architecture</h4>
+                    <div class="slide-content">
+                        <ul>
+                            <li>Data Collection Layer: Python scripts polling AM2302 sensor every 5 minutes</li>
+                            <li>Storage Layer: SQLite database for time-series data persistence</li>
+                            <li>Processing Layer: Automated data validation and anomaly detection</li>
+                            <li>Notification Layer: Slack webhook integration for threshold alerts</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide-card">
+                    <span class="slide-number">3</span>
+                    <h4>Key Challenges & Solutions</h4>
+                    <div class="slide-content">
+                        <ul>
+                            <li>Challenge: Sensor read failures caused data gaps</li>
+                            <li>Solution: Implemented retry logic with exponential backoff</li>
+                            <li>Challenge: Alert fatigue from excessive notifications</li>
+                            <li>Solution: Added configurable thresholds and cooldown periods</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide-card">
+                    <span class="slide-number">4</span>
+                    <h4>Results & Impact</h4>
+                    <div class="slide-content">
+                        <ul>
+                            <li>99.2% uptime over 30-day monitoring period</li>
+                            <li>Captured 8,640+ data points for analysis</li>
+                            <li>Reduced manual monitoring time by 15 hours/week</li>
+                            <li>Provided actionable insights for environmental optimization</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide-card">
+                    <span class="slide-number">5</span>
+                    <h4>Lessons Learned</h4>
+                    <div class="slide-content">
+                        <ul>
+                            <li>Importance of robust error handling in IoT systems</li>
+                            <li>Value of incremental development and testing</li>
+                            <li>User-centric alert design prevents notification fatigue</li>
+                            <li>Documentation critical for hardware troubleshooting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Goals Section -->
+    <section id="goals">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Vision</span>
+                <h2 class="section-title">Professional Goals</h2>
+            </div>
+            <div class="goals-content">
+                <h3>Short-Term Goals (1-2 Years)</h3>
+                <p>
+                    In the immediate term, I am focused on deepening my technical expertise in cloud-native data engineering and software development while completing my Bachelor of Science degree at The University of Texas at Dallas. I aim to secure a full-time software engineering or data engineering role at a technology company where I can contribute to building scalable, production-grade systems that serve real users. I am particularly interested in opportunities that involve Azure cloud services, database optimization, and full-stack development, as these align closely with my internship experience and academic focus. Additionally, I plan to earn Azure certifications (AZ-900, DP-203) to validate my cloud competencies and enhance my credibility in the data engineering space. Beyond technical skills, I am committed to developing my professional communication abilities through courses, presentations, and collaborative projects—essential capabilities for translating complex technical concepts to diverse stakeholders.
+                </p>
+
+                <h3>Long-Term Goals (5+ Years)</h3>
+                <p>
+                    Looking further ahead, my ambition is to progress into technical leadership roles where I can architect data infrastructure solutions and mentor junior engineers. I envision myself as a senior data engineer or solutions architect, leading cross-functional teams to design and implement data platforms that drive business intelligence and strategic decision-making. I am particularly passionate about the intersection of data engineering and social impact—I would like to contribute my skills to organizations or initiatives that leverage data to address pressing societal challenges such as education equity, healthcare accessibility, or environmental sustainability. In parallel with my technical career progression, I plan to remain actively engaged in community service and mentorship, building on my leadership experience with Pi Kappa Phi and the CS National Honor Society.
+                </p>
+
+                <p>
+                    Ultimately, my professional aspiration is to become a well-rounded technology leader who not only builds robust technical systems but also empowers teams, advocates for ethical data practices, and uses technology as a force for positive change. Whether I am optimizing database queries, designing cloud architectures, or leading philanthropic initiatives, I approach every endeavor with the same core values: continuous learning, collaborative excellence, and meaningful impact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Let's Connect</span>
+                <h2 class="section-title">Contact Information</h2>
+                <p class="section-description">
+                    I'm always open to discussing new opportunities, collaborations, or interesting technical challenges.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <a href="tel:8324044068" class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">(832) 404-4068</div>
+                </a>
+
+                <a href="mailto:johancarpena@gmail.com" class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <div class="contact-label">Personal Email</div>
+                    <div class="contact-value">johancarpena@gmail.com</div>
+                </a>
+
+                <a href="mailto:afc230005@utdallas.edu" class="contact-card">
+                    <div class="contact-icon">🎓</div>
+                    <div class="contact-label">Student Email</div>
+                    <div class="contact-value">afc230005@utdallas.edu</div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/andrei-carpena-882aborb28a/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <div class="contact-label">LinkedIn</div>
+                    <div class="contact-value">linkedin.com/in/andrei-carpena</div>
+                </a>
+
+                <a href="https://github.com/andreicarpena" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">💻</div>
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">github.com/andreicarpena</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Andrei Johan Carpena. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Built for Business Communication Class Presentation</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll with offset for fixed nav
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for section animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Active nav link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.style.color = 'var(--accent-secondary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
