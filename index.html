@@ -9,21 +9,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #141414;
             --bg-tertiary: #1f1f1f;
-            --accent-primary: #c9a961;
-            --accent-secondary: #d4bb7a;
-            --accent-tertiary: #b89850;
+            --accent-primary: #8b5cf6;
+            --accent-secondary: #a78bfa;
+            --accent-tertiary: #7c3aed;
+            --accent-dark: #6d28d9;
             --text-primary: #f5f5f5;
             --text-secondary: #d1d1d1;
             --text-muted: #888888;
             --border-color: #2a2a2a;
-            --success: #c9a961;
+            --success: #8b5cf6;
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 1.5rem;
@@ -46,11 +47,15 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
         }
 
         /* Navigation */
@@ -83,16 +88,24 @@
             font-weight: 700;
             color: var(--text-primary);
             text-decoration: none;
-            letter-spacing: 0.15em;
-            font-family: 'Georgia', serif;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover {
+            color: var(--accent-secondary);
         }
 
         .nav-logo svg {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
+            transition: var(--transition);
+        }
+
+        .nav-logo:hover svg {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -179,7 +192,7 @@
             border-radius: 50%;
             margin: 0 auto var(--spacing-lg);
             border: 4px solid var(--accent-primary);
-            box-shadow: 0 0 40px rgba(201, 169, 97, 0.2);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
             object-fit: cover;
         }
 
@@ -231,14 +244,14 @@
 
         .btn-primary {
             background: var(--accent-primary);
-            color: #0a0a0a;
-            box-shadow: 0 4px 6px -1px rgba(201, 169, 97, 0.3);
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.4);
         }
 
         .btn-primary:hover {
             background: var(--accent-tertiary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(201, 169, 97, 0.4);
+            box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.5);
         }
 
         .btn-secondary {
@@ -249,7 +262,7 @@
 
         .btn-secondary:hover {
             border-color: var(--accent-primary);
-            background: rgba(201, 169, 97, 0.1);
+            background: rgba(139, 92, 246, 0.1);
         }
 
         /* Section Headers */
@@ -367,7 +380,7 @@
             height: 12px;
             border-radius: 50%;
             background: var(--accent-primary);
-            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px rgba(201, 169, 97, 0.4);
+            box-shadow: 0 0 0 4px var(--bg-primary), 0 0 0 6px rgba(139, 92, 246, 0.4);
         }
 
         .timeline-content {
@@ -464,7 +477,7 @@
         .card:hover {
             border-color: var(--accent-primary);
             transform: translateY(-4px);
-            box-shadow: 0 12px 24px -10px rgba(201, 169, 97, 0.2);
+            box-shadow: 0 12px 24px -10px rgba(139, 92, 246, 0.3);
         }
 
         .card:hover::before {
@@ -532,7 +545,7 @@
             font-size: 0.8rem;
             font-weight: 500;
             border: 1px solid var(--border-color);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'DM Sans', monospace;
         }
 
         /* Skills Section */
@@ -557,6 +570,11 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
+        }
+
+        .skill-category-icon {
+            width: 24px;
+            height: 24px;
         }
 
         .skill-list {
@@ -649,7 +667,7 @@
             top: var(--spacing-sm);
             right: var(--spacing-sm);
             background: var(--accent-primary);
-            color: var(--text-primary);
+            color: #ffffff;
             width: 32px;
             height: 32px;
             border-radius: 50%;
@@ -740,12 +758,20 @@
         .contact-card:hover {
             border-color: var(--accent-primary);
             transform: translateY(-4px);
-            box-shadow: 0 8px 16px -6px rgba(201, 169, 97, 0.2);
+            box-shadow: 0 8px 16px -6px rgba(139, 92, 246, 0.3);
         }
 
         .contact-icon {
-            font-size: 2rem;
-            margin-bottom: var(--spacing-sm);
+            width: 48px;
+            height: 48px;
+            margin: 0 auto var(--spacing-sm);
+            color: var(--accent-secondary);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover .contact-icon {
+            color: var(--accent-primary);
+            transform: scale(1.1);
         }
 
         .contact-label {
@@ -843,11 +869,20 @@
     <nav id="nav">
         <div class="nav-container">
             <a href="#home" class="nav-logo" aria-label="Home">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="10" y="10" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none"/>
-                    <text x="50" y="65" font-family="Georgia, serif" font-size="36" font-weight="700" text-anchor="middle" fill="currentColor" letter-spacing="2">AJC</text>
+                <!-- Sophisticated AJC Artistic Monogram - Letters Flow Together -->
+                <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- A - Modern geometric with shared stroke into J -->
+                    <path d="M15 70 L25 30 L35 70 M20 55 L30 55" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <!-- J - Flows from A's right leg, curves into C with elegant arc -->
+                    <path d="M35 35 L35 58 Q35 70 47 70" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <!-- C - Interlocks with J's curve, creating continuous flow -->
+                    <path d="M75 38 Q65 30 52 30 Q47 30 47 38 L47 62 Q47 70 52 70 Q65 70 75 62" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <!-- Subtle connecting element - negative space bridge between J and C -->
+                    <circle cx="47" cy="55" r="2" fill="currentColor" opacity="0.3"/>
                 </svg>
-                <span>AJC</span>
             </a>
             <ul class="nav-links" role="navigation">
                 <li><a href="#about">About</a></li>
@@ -865,7 +900,7 @@
     <section id="home" class="hero visible">
         <div class="container">
             <div class="hero-content">
-                <img src="https://placehold.co/400x400/141414/c9a961?text=AJC" alt="Andrei Johan Carpena" class="hero-image">
+                <img src="https://placehold.co/400x400/141414/8b5cf6?text=AJC" alt="Andrei Johan Carpena" class="hero-image">
                 <h1>Andrei Johan Carpena</h1>
                 <p class="hero-subtitle">Data Analytics & Information Systems</p>
                 <p class="hero-tagline">
@@ -1050,7 +1085,11 @@
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3 class="skill-category-title">
-                        <span>💻</span> Programming Languages
+                        <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                        Programming Languages
                     </h3>
                     <div class="skill-list">
                         <span class="skill-item">Python</span>
@@ -1063,7 +1102,10 @@
 
                 <div class="skill-category">
                     <h3 class="skill-category-title">
-                        <span>☁️</span> Cloud & Data Platforms
+                        <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                        </svg>
+                        Cloud & Data Platforms
                     </h3>
                     <div class="skill-list">
                         <span class="skill-item">Azure Cloud</span>
@@ -1075,7 +1117,10 @@
 
                 <div class="skill-category">
                     <h3 class="skill-category-title">
-                        <span>🛠️</span> Tools & Technologies
+                        <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                        </svg>
+                        Tools & Technologies
                     </h3>
                     <div class="skill-list">
                         <span class="skill-item">Raspberry Pi</span>
@@ -1087,7 +1132,12 @@
 
                 <div class="skill-category">
                     <h3 class="skill-category-title">
-                        <span>🌐</span> Languages
+                        <svg class="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        Languages
                     </h3>
                     <div class="skill-list">
                         <span class="skill-item">English (Native)</span>
@@ -1281,33 +1331,62 @@
             </div>
             <div class="contact-grid">
                 <a href="tel:8324044068" class="contact-card">
-                    <div class="contact-icon">📱</div>
+                    <!-- Custom Geometric Phone Icon -->
+                    <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 8 C12 8 10 10 10 12 L10 36 C10 38 12 40 14 40 L34 40 C36 40 38 38 38 36 L38 12 C38 10 36 8 34 8 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <rect x="16" y="13" width="16" height="18" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="24" cy="35" r="1.5" fill="currentColor"/>
+                        <path d="M20 16 L28 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                    </svg>
                     <div class="contact-label">Phone</div>
                     <div class="contact-value">(832) 404-4068</div>
                 </a>
 
                 <a href="mailto:johancarpena@gmail.com" class="contact-card">
-                    <div class="contact-icon">✉️</div>
+                    <!-- Custom Artistic Email Icon -->
+                    <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 12 L8 36 C8 38 10 40 12 40 L36 40 C38 40 40 38 40 36 L40 12 C40 10 38 8 36 8 L12 8 C10 8 8 10 8 12 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 14 L24 26 L40 14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 36 L18 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+                        <path d="M40 36 L30 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/>
+                    </svg>
                     <div class="contact-label">Personal Email</div>
                     <div class="contact-value">johancarpena@gmail.com</div>
                 </a>
 
                 <a href="mailto:afc230005@utdallas.edu" class="contact-card">
-                    <div class="contact-icon">🎓</div>
+                    <!-- Custom Academic Email Icon -->
+                    <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24 10 L42 18 L24 26 L6 18 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 22 L12 30 C12 32 16 36 24 36 C32 36 36 32 36 30 L36 22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M42 18 L42 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="24" cy="18" r="1.5" fill="currentColor" opacity="0.5"/>
+                    </svg>
                     <div class="contact-label">Student Email</div>
                     <div class="contact-value">afc230005@utdallas.edu</div>
                 </a>
 
-                <a href="https://www.linkedin.com/in/andrei-carpena-882aborb28a/" target="_blank" rel="noopener noreferrer" class="contact-card">
-                    <div class="contact-icon">💼</div>
+                <a href="https://www.linkedin.com/in/andrei-carpena/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <!-- Custom LinkedIn Icon - Professional Network Design -->
+                    <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="17" cy="18" r="2.5" fill="currentColor"/>
+                        <path d="M14 24 L14 34 L20 34 L20 24 Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <path d="M24 24 L24 34 L30 34 L30 28 C30 26 28 24 26 24 C24.5 24 24 24.5 24 24.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                    </svg>
                     <div class="contact-label">LinkedIn</div>
                     <div class="contact-value">linkedin.com/in/andrei-carpena</div>
                 </a>
 
-                <a href="https://github.com/andreicarpena" target="_blank" rel="noopener noreferrer" class="contact-card">
-                    <div class="contact-icon">💻</div>
+                <a href="https://github.com/rokkin" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <!-- Custom GitHub Icon - Code Repository Design -->
+                    <svg class="contact-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2.5"/>
+                        <path d="M24 10 C16 10 10 16 10 24 C10 30 13 35 18 37 C18.5 37.1 19 36.8 19 36.3 L19 34 C15 34.8 14 32 14 32 C13.5 31 12.5 30.5 12.5 30.5 C11 29.5 12.5 29.5 12.5 29.5 C14 29.6 14.8 31 14.8 31 C16.3 33.3 18.8 32.5 19.1 32.3 C19.3 31.3 19.7 30.5 20.2 30 C17 29.5 13.5 28 13.5 22.5 C13.5 20.8 14 19.5 14.8 18.5 C14.6 18 14 16.3 15 14.3 C15 14.3 16.3 13.8 19 15.8 C20.3 15.4 21.6 15.2 24 15.2 C26.4 15.2 27.7 15.4 29 15.8 C31.7 13.8 33 14.3 33 14.3 C34 16.3 33.4 18 33.2 18.5 C34 19.5 34.5 20.8 34.5 22.5 C34.5 28 31 29.5 27.8 30 C28.4 30.5 28.9 31.5 28.9 33 L28.9 36.3 C28.9 36.8 29.4 37.1 30 37 C35 35 38 30 38 24 C38 16 32 10 24 10 Z" fill="currentColor" opacity="0.2"/>
+                        <path d="M16 34 C15.5 35 14.5 35.5 13.5 35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
                     <div class="contact-label">GitHub</div>
-                    <div class="contact-value">github.com/andreicarpena</div>
+                    <div class="contact-value">github.com/rokkin</div>
                 </a>
             </div>
         </div>
