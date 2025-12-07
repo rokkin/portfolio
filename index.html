@@ -867,6 +867,154 @@
             outline: 2px solid var(--accent-primary);
             outline-offset: 2px;
         }
+
+        /* Presentation Carousel */
+        .presentation-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-xl);
+            position: relative;
+        }
+
+        .presentation-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .presentation-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-primary);
+        }
+
+        .presentation-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: var(--bg-tertiary);
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+        }
+
+        .carousel-slide img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: calc(var(--border-radius) / 2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-lg);
+            gap: var(--spacing-md);
+        }
+
+        .carousel-btn {
+            background: var(--accent-primary);
+            color: #ffffff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 1.25rem;
+            box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent-tertiary);
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.5);
+        }
+
+        .carousel-btn:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: var(--spacing-xs);
+            align-items: center;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-primary);
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        .carousel-dot:hover:not(.active) {
+            background: var(--accent-secondary);
+        }
+
+        .carousel-counter {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                padding: var(--spacing-sm);
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .presentation-container {
+                padding: var(--spacing-md);
+            }
+        }
     </style>
 </head>
 <body>
@@ -880,6 +1028,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#presentation">Presentation</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#leadership">Leadership</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -929,12 +1078,12 @@
         </div>
     </section>
 
-    <!-- Video Section -->
+    <!-- Introduction Video Section -->
     <section id="video">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Introduction</span>
-                <h2 class="section-title">Get to Know Me</h2>
+                <h2 class="section-title">Meet Me</h2>
             </div>
             <div class="video-container">
                 <div class="video-placeholder">
@@ -943,7 +1092,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <h3>Self-Introduction Video</h3>
-                    <p>Video content will be embedded here</p>
+                    <p>Video coming soon</p>
                 </div>
             </div>
         </div>
@@ -1207,80 +1356,37 @@
         </div>
     </section>
 
-    <!-- Slide Deck Section -->
-    <section id="slides">
+    <!-- Technical Presentation Sample Section -->
+    <section id="presentation">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Presentation</span>
                 <h2 class="section-title">Technical Presentation Sample</h2>
-                <p class="section-description">
-                    Key slides from "Building Scalable IoT Data Pipelines: Project Apollo Case Study"
-                </p>
             </div>
-            <div class="slide-deck">
-                <div class="slide-card">
-                    <span class="slide-number">1</span>
-                    <h4>Project Overview</h4>
-                    <div class="slide-content">
-                        <ul>
-                            <li>Built end-to-end IoT data pipeline for environmental monitoring</li>
-                            <li>Hardware: Raspberry Pi 4, AM2302 temperature/humidity sensor</li>
-                            <li>Real-time data collection with automated alerting system</li>
-                            <li>Integration with Slack API for team notifications</li>
-                        </ul>
+            <div class="presentation-container">
+                <div class="presentation-header">
+                    <h3>Apollo Project: IoT with Raspberry Pi</h3>
+                    <p>Summer 2023</p>
+                </div>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container" id="carouselContainer">
+                        <div class="carousel-slide">
+                            <img src="cover1.png" alt="Apollo Project Cover Slide" loading="lazy">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="body1.png" alt="Apollo Project Content Slide" loading="lazy">
+                        </div>
                     </div>
                 </div>
-
-                <div class="slide-card">
-                    <span class="slide-number">2</span>
-                    <h4>Technical Architecture</h4>
-                    <div class="slide-content">
-                        <ul>
-                            <li>Data Collection Layer: Python scripts polling AM2302 sensor every 5 minutes</li>
-                            <li>Storage Layer: SQLite database for time-series data persistence</li>
-                            <li>Processing Layer: Automated data validation and anomaly detection</li>
-                            <li>Notification Layer: Slack webhook integration for threshold alerts</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slide-card">
-                    <span class="slide-number">3</span>
-                    <h4>Key Challenges & Solutions</h4>
-                    <div class="slide-content">
-                        <ul>
-                            <li>Challenge: Sensor read failures caused data gaps</li>
-                            <li>Solution: Implemented retry logic with exponential backoff</li>
-                            <li>Challenge: Alert fatigue from excessive notifications</li>
-                            <li>Solution: Added configurable thresholds and cooldown periods</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slide-card">
-                    <span class="slide-number">4</span>
-                    <h4>Results & Impact</h4>
-                    <div class="slide-content">
-                        <ul>
-                            <li>99.2% uptime over 30-day monitoring period</li>
-                            <li>Captured 8,640+ data points for analysis</li>
-                            <li>Reduced manual monitoring time by 15 hours/week</li>
-                            <li>Provided actionable insights for environmental optimization</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="slide-card">
-                    <span class="slide-number">5</span>
-                    <h4>Lessons Learned</h4>
-                    <div class="slide-content">
-                        <ul>
-                            <li>Importance of robust error handling in IoT systems</li>
-                            <li>Value of incremental development and testing</li>
-                            <li>User-centric alert design prevents notification fatigue</li>
-                            <li>Documentation critical for hardware troubleshooting</li>
-                        </ul>
-                    </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">
+                        <span>‹</span>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <span class="carousel-counter" id="carouselCounter">1 / 2</span>
+                    <button class="carousel-btn" id="nextBtn" aria-label="Next slide">
+                        <span>›</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1464,6 +1570,98 @@
                 }
             });
         });
+
+        // Carousel Functionality
+        const carouselContainer = document.getElementById('carouselContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carouselDots = document.getElementById('carouselDots');
+        const carouselCounter = document.getElementById('carouselCounter');
+
+        if (carouselContainer && prevBtn && nextBtn) {
+            const slides = carouselContainer.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                carouselDots.appendChild(dot);
+            }
+
+            const dots = carouselDots.querySelectorAll('.carousel-dot');
+
+            function updateCarousel() {
+                const offset = -currentSlide * 100;
+                carouselContainer.style.transform = `translateX(${offset}%)`;
+
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+
+                // Update counter
+                carouselCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+                // Update button states
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateCarousel();
+                }
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carouselContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carouselContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) nextSlide();
+                if (touchEndX > touchStartX + 50) prevSlide();
+            }
+
+            // Initialize
+            updateCarousel();
+        }
     </script>
 </body>
 </html>
