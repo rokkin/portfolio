@@ -1386,6 +1386,107 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Resume Section Styles */
+        .resume-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .resume-viewer {
+            width: 100%;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .pdf-embed {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+        }
+
+        .pdf-fallback {
+            padding: var(--spacing-xl);
+            text-align: center;
+            color: #b4b4b4;
+            display: none;
+        }
+
+        .download-link-inline {
+            color: var(--accent-primary);
+            text-decoration: underline;
+            transition: var(--transition);
+        }
+
+        .download-link-inline:hover {
+            color: var(--accent-secondary);
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resume-download-btn,
+        .resume-view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .resume-view-btn {
+            background: linear-gradient(135deg, var(--accent-secondary) 0%, var(--accent-tertiary) 100%);
+            box-shadow: 0 4px 15px rgba(167, 139, 250, 0.3);
+        }
+
+        .resume-download-btn:hover,
+        .resume-view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .download-icon,
+        .view-icon {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-embed {
+                height: 500px;
+            }
+
+            .resume-actions {
+                flex-direction: column;
+            }
+
+            .resume-download-btn,
+            .resume-view-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1402,6 +1503,7 @@
                 <li><a href="#presentations">Presentations</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
@@ -2095,6 +2197,45 @@
                 <p>
                     Ultimately, my professional aspiration is to become a well-rounded technology leader who not only builds robust technical systems but also empowers teams, advocates for ethical data practices, and uses technology as a force for positive change. Whether I am optimizing database queries, designing cloud architectures, or leading philanthropic initiatives, I approach every endeavor with the same core values: continuous learning, collaborative excellence, and meaningful impact.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Download</span>
+                <h2 class="section-title">Resume</h2>
+                <p class="section-description">
+                    View or download my complete resume highlighting my experience, skills, and education
+                </p>
+            </div>
+            <div class="resume-content">
+                <div class="resume-viewer">
+                    <embed src="resume.pdf" type="application/pdf" class="pdf-embed">
+                    <p class="pdf-fallback">
+                        Your browser doesn't support embedded PDFs.
+                        <a href="resume.pdf" download class="download-link-inline">Click here to download the PDF</a>
+                    </p>
+                </div>
+                <div class="resume-actions">
+                    <a href="resume.pdf" download class="resume-download-btn">
+                        <svg class="download-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3V16M12 16L7 11M12 16L17 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 17V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Download Resume
+                    </a>
+                    <a href="resume.pdf" target="_blank" class="resume-view-btn">
+                        <svg class="view-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7L15 3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 3V7H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 13H15M9 17H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        View Full Resume
+                    </a>
+                </div>
             </div>
         </div>
     </section>
