@@ -868,15 +868,70 @@
             outline-offset: 2px;
         }
 
-        /* Presentation Carousel */
+        /* Multi-Presentation System */
         .presentation-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: var(--bg-secondary);
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             padding: var(--spacing-xl);
             position: relative;
+        }
+
+        /* Presentation Tabs */
+        .presentation-tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            border-bottom: 2px solid var(--border-color);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .presentation-tab {
+            background: transparent;
+            border: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+            font-family: 'Outfit', sans-serif;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .presentation-tab:hover {
+            color: var(--accent-secondary);
+        }
+
+        .presentation-tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        /* Individual Presentation Wrapper */
+        .presentation-wrapper {
+            display: none;
+        }
+
+        .presentation-wrapper.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .presentation-header {
@@ -925,6 +980,195 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
+        /* HTML Slide Styles for Neon Shadows */
+        .html-slide {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a0a2e 100%);
+            border-radius: calc(var(--border-radius) / 2);
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .html-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .html-slide.cover-slide {
+            background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
+            justify-content: center;
+            text-align: center;
+        }
+
+        .html-slide.cover-slide::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .neon-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            letter-spacing: -0.02em;
+        }
+
+        .neon-subtitle {
+            font-size: 1.5rem;
+            color: #a78bfa;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(167, 139, 250, 0.4);
+        }
+
+        .neon-author {
+            font-size: 1.25rem;
+            color: #d1d1d1;
+            font-weight: 500;
+        }
+
+        .slide-section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8b5cf6;
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .slide-text {
+            color: #d1d1d1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .slide-list {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .slide-list li {
+            color: #d1d1d1;
+            font-size: 1.05rem;
+            padding: var(--spacing-sm) 0;
+            padding-left: 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .slide-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #ec4899;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .tech-item {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: calc(var(--border-radius) / 2);
+            padding: var(--spacing-md);
+            text-align: center;
+            color: #a78bfa;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .tech-item:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+        }
+
+        .challenge-box {
+            background: rgba(236, 72, 153, 0.1);
+            border-left: 4px solid #ec4899;
+            padding: var(--spacing-md) var(--spacing-lg);
+            margin: var(--spacing-md) 0;
+            border-radius: calc(var(--border-radius) / 2);
+        }
+
+        .challenge-box h4 {
+            color: #ec4899;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .challenge-box p {
+            color: #d1d1d1;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .thank-you-slide {
+            text-align: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a0a2e 0%, #0f0f1e 100%);
+        }
+
+        .thank-you-text {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .questions-text {
+            font-size: 1.5rem;
+            color: #a78bfa;
+            font-weight: 600;
+        }
+
+        /* Carousel Navigation */
         .carousel-nav {
             display: flex;
             justify-content: space-between;
@@ -1005,6 +1249,23 @@
                 padding: var(--spacing-sm);
             }
 
+            .html-slide {
+                padding: var(--spacing-lg) var(--spacing-md);
+                min-height: 400px;
+            }
+
+            .neon-title {
+                font-size: 2rem;
+            }
+
+            .slide-section-title {
+                font-size: 1.5rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .carousel-btn {
                 width: 40px;
                 height: 40px;
@@ -1013,6 +1274,15 @@
 
             .presentation-container {
                 padding: var(--spacing-md);
+            }
+
+            .presentation-tabs {
+                gap: var(--spacing-sm);
+            }
+
+            .presentation-tab {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -1028,7 +1298,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#presentation">Presentation</a></li>
+                <li><a href="#presentations">Presentations</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#leadership">Leadership</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1356,37 +1626,175 @@
         </div>
     </section>
 
-    <!-- Technical Presentation Sample Section -->
-    <section id="presentation">
+    <!-- Technical Presentations Section -->
+    <section id="presentations">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Presentation</span>
-                <h2 class="section-title">Technical Presentation Sample</h2>
+                <span class="section-tag">Presentations</span>
+                <h2 class="section-title">Technical Presentation Samples</h2>
+                <p class="section-description">
+                    Explore my technical presentations showcasing IoT development and interactive game design
+                </p>
             </div>
             <div class="presentation-container">
-                <div class="presentation-header">
-                    <h3>Apollo Project: IoT with Raspberry Pi</h3>
-                    <p>Summer 2023</p>
+                <!-- Presentation Tabs -->
+                <div class="presentation-tabs">
+                    <button class="presentation-tab active" data-presentation="apollo">
+                        Apollo Project
+                    </button>
+                    <button class="presentation-tab" data-presentation="neon-shadows">
+                        Neon Shadows
+                    </button>
                 </div>
-                <div class="carousel-wrapper">
-                    <div class="carousel-container" id="carouselContainer">
-                        <div class="carousel-slide">
-                            <img src="cover1.png" alt="Apollo Project Cover Slide" loading="lazy">
-                        </div>
-                        <div class="carousel-slide">
-                            <img src="body1.png" alt="Apollo Project Content Slide" loading="lazy">
+
+                <!-- Apollo Project Presentation -->
+                <div class="presentation-wrapper active" id="apollo-presentation">
+                    <div class="presentation-header">
+                        <h3>Apollo Project: IoT with Raspberry Pi</h3>
+                        <p>Summer 2023</p>
+                    </div>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-container apollo-carousel">
+                            <div class="carousel-slide">
+                                <img src="cover1.png" alt="Apollo Project Cover Slide" loading="lazy">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="body1.png" alt="Apollo Project Content Slide" loading="lazy">
+                            </div>
                         </div>
                     </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn apollo-prev" aria-label="Previous slide">
+                            <span>‹</span>
+                        </button>
+                        <div class="carousel-dots apollo-dots"></div>
+                        <span class="carousel-counter apollo-counter">1 / 2</span>
+                        <button class="carousel-btn apollo-next" aria-label="Next slide">
+                            <span>›</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="carousel-nav">
-                    <button class="carousel-btn" id="prevBtn" aria-label="Previous slide">
-                        <span>‹</span>
-                    </button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <span class="carousel-counter" id="carouselCounter">1 / 2</span>
-                    <button class="carousel-btn" id="nextBtn" aria-label="Next slide">
-                        <span>›</span>
-                    </button>
+
+                <!-- Neon Shadows Presentation -->
+                <div class="presentation-wrapper" id="neon-shadows-presentation">
+                    <div class="presentation-header">
+                        <h3>Neon Shadows: A Choose Your Own Adventure Game</h3>
+                        <p>November 2025</p>
+                    </div>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-container neon-carousel">
+                            <!-- Slide 1: Cover -->
+                            <div class="carousel-slide">
+                                <div class="html-slide cover-slide">
+                                    <div class="slide-content">
+                                        <h1 class="neon-title">NEON SHADOWS</h1>
+                                        <p class="neon-subtitle">A Choose Your Own Adventure Game</p>
+                                        <p class="neon-author">Andrei Johan Carpena</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Overview -->
+                            <div class="carousel-slide">
+                                <div class="html-slide">
+                                    <div class="slide-content">
+                                        <h2 class="slide-section-title">Project Overview</h2>
+                                        <p class="slide-text">
+                                            Neon Shadows is an immersive, choice-driven narrative experience set in a dystopian cyberpunk future where players navigate moral dilemmas and branching storylines.
+                                        </p>
+                                        <ul class="slide-list">
+                                            <li>Interactive storytelling with 50+ decision points</li>
+                                            <li>Multiple endings based on player choices and morality score</li>
+                                            <li>Dynamic character relationships that evolve throughout gameplay</li>
+                                            <li>Rich narrative exploring themes of identity, technology, and freedom</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Gameplay Mechanics -->
+                            <div class="carousel-slide">
+                                <div class="html-slide">
+                                    <div class="slide-content">
+                                        <h2 class="slide-section-title">Gameplay Mechanics</h2>
+                                        <p class="slide-text">
+                                            The game features sophisticated choice tracking and consequence systems that create a unique experience for each playthrough.
+                                        </p>
+                                        <ul class="slide-list">
+                                            <li>Branching narrative tree with 8 distinct endings</li>
+                                            <li>Morality tracking system influencing available choices</li>
+                                            <li>Inventory management affecting puzzle solutions</li>
+                                            <li>Character reputation system unlocking special dialogue</li>
+                                            <li>Save system allowing players to explore different paths</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Tech Stack -->
+                            <div class="carousel-slide">
+                                <div class="html-slide">
+                                    <div class="slide-content">
+                                        <h2 class="slide-section-title">Technology Stack</h2>
+                                        <p class="slide-text">
+                                            Built with modern tools optimized for interactive fiction development and cross-platform deployment.
+                                        </p>
+                                        <div class="tech-grid">
+                                            <div class="tech-item">Python 3.11</div>
+                                            <div class="tech-item">Twine Engine</div>
+                                            <div class="tech-item">JSON Storage</div>
+                                            <div class="tech-item">Custom Parser</div>
+                                            <div class="tech-item">State Machine</div>
+                                            <div class="tech-item">SQLite DB</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 5: Challenges & Learnings -->
+                            <div class="carousel-slide">
+                                <div class="html-slide">
+                                    <div class="slide-content">
+                                        <h2 class="slide-section-title">Challenges & Learnings</h2>
+
+                                        <div class="challenge-box">
+                                            <h4>Narrative Complexity Management</h4>
+                                            <p>
+                                                Designed a state machine architecture to track 100+ story variables and ensure narrative consistency across branching paths, preventing plot holes and logical contradictions.
+                                            </p>
+                                        </div>
+
+                                        <div class="challenge-box">
+                                            <h4>Performance Optimization</h4>
+                                            <p>
+                                                Implemented lazy loading and caching strategies to handle large dialogue trees efficiently, reducing load times by 65% and enabling smooth transitions between story segments.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 6: Thank You -->
+                            <div class="carousel-slide">
+                                <div class="html-slide thank-you-slide">
+                                    <div class="slide-content">
+                                        <h2 class="thank-you-text">Thank You</h2>
+                                        <p class="questions-text">Questions?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-btn neon-prev" aria-label="Previous slide">
+                            <span>‹</span>
+                        </button>
+                        <div class="carousel-dots neon-dots"></div>
+                        <span class="carousel-counter neon-counter">1 / 6</span>
+                        <button class="carousel-btn neon-next" aria-label="Next slide">
+                            <span>›</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1571,97 +1979,164 @@
             });
         });
 
-        // Carousel Functionality
-        const carouselContainer = document.getElementById('carouselContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const carouselDots = document.getElementById('carouselDots');
-        const carouselCounter = document.getElementById('carouselCounter');
+        // Multi-Presentation Carousel System
+        class PresentationCarousel {
+            constructor(prefix, containerSelector, dotsSelector, counterSelector, prevSelector, nextSelector) {
+                this.prefix = prefix;
+                this.container = document.querySelector(containerSelector);
+                this.dotsContainer = document.querySelector(dotsSelector);
+                this.counter = document.querySelector(counterSelector);
+                this.prevBtn = document.querySelector(prevSelector);
+                this.nextBtn = document.querySelector(nextSelector);
 
-        if (carouselContainer && prevBtn && nextBtn) {
-            const slides = carouselContainer.querySelectorAll('.carousel-slide');
-            const totalSlides = slides.length;
-            let currentSlide = 0;
+                if (!this.container) return;
 
-            // Create dots
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('button');
-                dot.classList.add('carousel-dot');
-                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-                if (i === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(i));
-                carouselDots.appendChild(dot);
+                this.slides = this.container.querySelectorAll('.carousel-slide');
+                this.totalSlides = this.slides.length;
+                this.currentSlide = 0;
+                this.dots = [];
+
+                this.init();
             }
 
-            const dots = carouselDots.querySelectorAll('.carousel-dot');
+            init() {
+                this.createDots();
+                this.attachEventListeners();
+                this.updateCarousel();
+            }
 
-            function updateCarousel() {
-                const offset = -currentSlide * 100;
-                carouselContainer.style.transform = `translateX(${offset}%)`;
+            createDots() {
+                for (let i = 0; i < this.totalSlides; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToSlide(i));
+                    this.dotsContainer.appendChild(dot);
+                    this.dots.push(dot);
+                }
+            }
+
+            updateCarousel() {
+                const offset = -this.currentSlide * 100;
+                this.container.style.transform = `translateX(${offset}%)`;
 
                 // Update dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentSlide);
                 });
 
                 // Update counter
-                carouselCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+                this.counter.textContent = `${this.currentSlide + 1} / ${this.totalSlides}`;
 
                 // Update button states
-                prevBtn.disabled = currentSlide === 0;
-                nextBtn.disabled = currentSlide === totalSlides - 1;
+                this.prevBtn.disabled = this.currentSlide === 0;
+                this.nextBtn.disabled = this.currentSlide === this.totalSlides - 1;
             }
 
-            function goToSlide(index) {
-                currentSlide = index;
-                updateCarousel();
+            goToSlide(index) {
+                this.currentSlide = index;
+                this.updateCarousel();
             }
 
-            function nextSlide() {
-                if (currentSlide < totalSlides - 1) {
-                    currentSlide++;
-                    updateCarousel();
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides - 1) {
+                    this.currentSlide++;
+                    this.updateCarousel();
                 }
             }
 
-            function prevSlide() {
-                if (currentSlide > 0) {
-                    currentSlide--;
-                    updateCarousel();
+            prevSlide() {
+                if (this.currentSlide > 0) {
+                    this.currentSlide--;
+                    this.updateCarousel();
                 }
             }
 
-            // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
+            attachEventListeners() {
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                this.prevBtn.addEventListener('click', () => this.prevSlide());
 
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'ArrowRight') nextSlide();
-            });
+                // Touch/swipe support
+                let touchStartX = 0;
+                let touchEndX = 0;
 
-            // Touch/swipe support
-            let touchStartX = 0;
-            let touchEndX = 0;
+                this.container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
 
-            carouselContainer.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            carouselContainer.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
-
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50) nextSlide();
-                if (touchEndX > touchStartX + 50) prevSlide();
+                this.container.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    this.handleSwipe(touchStartX, touchEndX);
+                });
             }
 
-            // Initialize
-            updateCarousel();
+            handleSwipe(startX, endX) {
+                if (endX < startX - 50) this.nextSlide();
+                if (endX > startX + 50) this.prevSlide();
+            }
         }
+
+        // Initialize both carousels
+        const apolloCarousel = new PresentationCarousel(
+            'apollo',
+            '.apollo-carousel',
+            '.apollo-dots',
+            '.apollo-counter',
+            '.apollo-prev',
+            '.apollo-next'
+        );
+
+        const neonCarousel = new PresentationCarousel(
+            'neon',
+            '.neon-carousel',
+            '.neon-dots',
+            '.neon-counter',
+            '.neon-prev',
+            '.neon-next'
+        );
+
+        // Presentation Tab Switching
+        const presentationTabs = document.querySelectorAll('.presentation-tab');
+        const presentationWrappers = document.querySelectorAll('.presentation-wrapper');
+        let currentCarousel = apolloCarousel;
+
+        presentationTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetPresentation = tab.getAttribute('data-presentation');
+
+                // Update active tab
+                presentationTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update active presentation
+                presentationWrappers.forEach(wrapper => {
+                    wrapper.classList.remove('active');
+                });
+
+                const targetWrapper = document.getElementById(`${targetPresentation}-presentation`);
+                if (targetWrapper) {
+                    targetWrapper.classList.add('active');
+                }
+
+                // Update current carousel reference for keyboard navigation
+                if (targetPresentation === 'apollo') {
+                    currentCarousel = apolloCarousel;
+                } else if (targetPresentation === 'neon-shadows') {
+                    currentCarousel = neonCarousel;
+                }
+            });
+        });
+
+        // Global keyboard navigation for active carousel
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentCarousel) {
+                currentCarousel.prevSlide();
+            }
+            if (e.key === 'ArrowRight' && currentCarousel) {
+                currentCarousel.nextSlide();
+            }
+        });
     </script>
 </body>
 </html>
