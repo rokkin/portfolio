@@ -1487,6 +1487,55 @@
                 justify-content: center;
             }
         }
+
+        /* Video Section Styles */
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-container-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(139, 92, 246, 0.2),
+                inset 0 0 20px rgba(139, 92, 246, 0.05);
+            transition: var(--transition);
+        }
+
+        .video-container-embed:hover {
+            border-color: rgba(139, 92, 246, 0.5);
+            box-shadow:
+                0 15px 50px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(139, 92, 246, 0.4),
+                inset 0 0 30px rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .video-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .video-wrapper {
+                padding: 0 var(--spacing-sm);
+            }
+
+            .video-container-embed {
+                border-width: 1px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1498,6 +1547,7 @@
             </a>
             <ul class="nav-links" role="navigation">
                 <li><a href="#about">About</a></li>
+                <li><a href="#video">A Brief Hello</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#presentations">Presentations</a></li>
@@ -1556,16 +1606,19 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Introduction</span>
-                <h2 class="section-title">Meet Me</h2>
+                <h2 class="section-title">A Brief Hello</h2>
+                <p class="section-description">
+                    Watch my introduction video to learn more about me and my journey
+                </p>
             </div>
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="margin: 0 auto; display: block; color: var(--accent-primary);">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h3>Self-Introduction Video</h3>
-                    <p>Video coming soon</p>
+            <div class="video-wrapper">
+                <div class="video-container-embed">
+                    <iframe
+                        src="https://drive.google.com/file/d/1AJtMCa6YlbqZAZYg7iV7sYR3wd7s0ZiJ/preview"
+                        class="video-iframe"
+                        allow="autoplay"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
