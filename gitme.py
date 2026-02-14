@@ -47,7 +47,7 @@ def main():
     branch = subprocess.run("git rev-parse --abbrev-ref HEAD", shell=True, capture_output=True, text=True).stdout.strip()
     run_git("Pushing to GitHub", f"git push origin {branch}")
 
-    print(f"\n{GREEN}🎉 All changes are live @bc!{END}\n")
+    print(f"\n{GREEN}🎉 All changes are live @rokkin!{END}\n")
 
 if __name__ == "__main__":
     main()
