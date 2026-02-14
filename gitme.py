@@ -43,8 +43,9 @@ def main():
     run_git("Committing", f'git commit -m "🚀 {dt}"')
     #run_git("Pushing to GitHub", "git push origin main")
     
-    # To make it work on any current branch:
-    run_git("Pushing to GitHub", "git push origin $(git rev-parse --abbrev-ref HEAD)")
+    # Get current branch name, then push
+    branch = subprocess.run("git rev-parse --abbrev-ref HEAD", shell=True, capture_output=True, text=True).stdout.strip()
+    run_git("Pushing to GitHub", f"git push origin {branch}")
 
     print(f"\n{GREEN}🎉 All changes are live @bc!{END}\n")
 
